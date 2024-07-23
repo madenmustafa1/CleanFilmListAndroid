@@ -1,10 +1,12 @@
 package com.maden.filmlist.presentation.film_list
 
 import android.os.Bundle
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.maden.filmlist.R
 import com.maden.filmlist.common.DataResource
@@ -25,6 +27,7 @@ class FilmListFragment @Inject constructor() : Fragment(R.layout.fragment_film_l
 
     private val _viewModel: FilmListViewModel by viewModels()
     private val _adapter = FilmListAdapter(this)
+    private var _isLinearLayout = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,6 +47,12 @@ class FilmListFragment @Inject constructor() : Fragment(R.layout.fragment_film_l
         val linearLayoutManager = LinearLayoutManager(requireContext())
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         binding.recyclerView.layoutManager = linearLayoutManager
+
+        binding.gridList.setOnClickListener { switchListLayout() }
+        binding.searchButton.setOnClickListener { toggleSearchBar() }
+        binding.searchRemoveButton.setOnClickListener { toggleSearchBar() }
+
+        binding.searchBar.addTextChangedListener(_viewModel.searchTextListener())
     }
 
     private fun observeData() {
@@ -65,6 +74,33 @@ class FilmListFragment @Inject constructor() : Fragment(R.layout.fragment_film_l
                     _adapter.addItems(it.data!!.resultList)
                 }
             }
+        }
+
+        _viewModel.filteredMovies.observe(viewLifecycleOwner) {
+            if (!isAdded) return@observe
+            _adapter.search(it!!)
+        }
+    }
+
+    private fun switchListLayout() {
+        _isLinearLayout = !_isLinearLayout
+        if (_isLinearLayout) {
+            binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            binding.gridList.setImageResource(R.drawable.grid)
+        } else {
+            binding.gridList.setImageResource(R.drawable.list)
+            binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        }
+        _adapter.notifyItemRangeChanged(0, _adapter.itemCount)
+    }
+
+    private fun toggleSearchBar() {
+        if (binding.toolbar.visibility == View.GONE) {
+            binding.toolbar.visibility = View.VISIBLE
+            binding.toolbarSearch.visibility = View.GONE
+        } else {
+            binding.toolbar.visibility = View.GONE
+            binding.toolbarSearch.visibility = View.VISIBLE
         }
     }
 

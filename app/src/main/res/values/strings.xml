@@ -11,4 +11,6 @@
     <string name="poster_image">Poster image</string>
     <string name="go_back">Go back</string>
     <string name="content_details">Content Details</string>
+    <string name="content">Content</string>
+    <string name="search">Search</string>
 </resources>

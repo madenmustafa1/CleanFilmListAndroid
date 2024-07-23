@@ -37,9 +37,25 @@ class FilmListAdapter(private val _clickListener: FilmListAdapterListener) :
     override fun getItemCount(): Int = items.size
 
     fun addItems(newItems: List<MovieItemResponseModel>) {
+        if (_search) {
+            items.clear()
+            _search = false
+        }
+
         val startIndex = items.size
         items.addAll(newItems)
-        notifyItemRangeInserted(startIndex, newItems.size)
+        //notifyItemRangeInserted(startIndex, newItems.size)
+        notifyDataSetChanged()
+    }
+
+    private var _search = false
+    fun search(newItems: List<MovieItemResponseModel>) {
+        _search = true
+
+        items.clear()
+        val startIndex = items.size
+        items.addAll(newItems)
+        notifyDataSetChanged()
     }
 
     fun clearAdapter() = items.clear()

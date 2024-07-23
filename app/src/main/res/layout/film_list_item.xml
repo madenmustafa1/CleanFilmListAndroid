@@ -10,6 +10,7 @@
     </data>
 
     <RelativeLayout
+        android:paddingHorizontal="5dp"
         android:id="@+id/itemLayout"
         android:layout_marginVertical="10dp"
         android:layout_width="match_parent"
