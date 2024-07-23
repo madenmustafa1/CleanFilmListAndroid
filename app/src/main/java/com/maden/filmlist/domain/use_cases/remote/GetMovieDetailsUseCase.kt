@@ -2,12 +2,13 @@ package com.maden.filmlist.domain.use_cases.remote
 
 import com.maden.filmlist.common.DataResource
 import com.maden.filmlist.data.remote.service.movie.MovieApiRepository
+import com.maden.filmlist.data.remote.service.movie.MovieApiService
 import com.maden.filmlist.domain.model.movie_detail.MovieDetailResponseModel
 import com.maden.filmlist.domain.model.movie_detail.toModel
 import javax.inject.Inject
 
 class GetMovieDetailsUseCase @Inject constructor(
-    private val _repository: MovieApiRepository
+    private val _repository: MovieApiService
 ) {
 
     /**

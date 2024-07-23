@@ -60,9 +60,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 
     //Dagger - Hilt
     implementation(libs.hilt.android)
@@ -84,4 +81,20 @@ dependencies {
     annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
+
+    //Test
+    testImplementation (libs.mockk)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    //Test - Mockito
+    testImplementation (libs.mockito.core)
+    testImplementation (libs.mockito.kotlin)
+
+    //Test - JUnit
+    testImplementation (libs.junit)
+
+    //Test - Coroutines
+    testImplementation (libs.kotlinx.coroutines.test)
+
 }
