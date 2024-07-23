@@ -1,0 +1,30 @@
+package com.maden.filmlist.data.remote.model.movie_detail
+
+data class MovieDetailResponseDto(
+    val adult: Boolean?,
+    val backdrop_path: String?,
+    val belongs_to_collection: BelongsToCollectionDto?,
+    val budget: Double?,
+    val genreDtos: List<GenreDto>?,
+    val homepage: String?,
+    val id: Double?,
+    val imdb_id: String?,
+    val origin_country: List<String>?,
+    val original_language: String?,
+    val original_title: String?,
+    val overview: String?,
+    val popularity: Double?,
+    val poster_path: String?,
+    val production_companies: List<ProductionCompanyDto>?,
+    val production_countries: List<ProductionCountryDto>?,
+    val release_date: String?,
+    val revenue: Double?,
+    val runtime: Double?,
+    val spoken_languages: List<SpokenLanguageDto>?,
+    val status: String?,
+    val tagline: String?,
+    val title: String?,
+    val video: Boolean?,
+    val vote_average: Double?,
+    val vote_count: Double?
+)
