@@ -41,13 +41,13 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun injectRickAndMortyRepository(api: MovieApiServiceInterface): MovieApiService {
+    fun injectApiRepository(api: MovieApiServiceInterface): MovieApiService {
         return MovieApiRepository(_apiService = api)
     }
 
     @Provides
     @Singleton
-    fun provideNoteDatabase(app: Application) : AppDatabase {
+    fun provideDatabase(app: Application) : AppDatabase {
         return Room.databaseBuilder(
             app,
             AppDatabase::class.java, AppDatabase.DATABASE_NAME
@@ -56,7 +56,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNoteRepository(db: AppDatabase) : MovieDaoRepository {
+    fun provideDaoRepository(db: AppDatabase) : MovieDaoRepository {
         return MovieDaoRepositoryImpl(db.userDao())
     }
 

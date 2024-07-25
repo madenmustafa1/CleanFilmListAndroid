@@ -1,7 +1,6 @@
 package com.maden.filmlist.presentation.film_list
 
 import android.os.Bundle
-import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.viewModels

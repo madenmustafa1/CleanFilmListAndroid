@@ -3,7 +3,6 @@ package com.maden.filmlist.data.local
 import com.maden.filmlist.common.DataResource
 import com.maden.filmlist.data.local.dao.MovieDao
 import com.maden.filmlist.data.local.model.MovieDetailDaoModel
-import com.maden.filmlist.data.local.model.MovieItemDaoModel
 
 class MovieDaoRepositoryImpl(
     private val dao: MovieDao

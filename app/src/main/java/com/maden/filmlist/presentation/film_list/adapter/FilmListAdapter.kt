@@ -42,9 +42,7 @@ class FilmListAdapter(private val _clickListener: FilmListAdapterListener) :
             _search = false
         }
 
-        val startIndex = items.size
         items.addAll(newItems)
-        //notifyItemRangeInserted(startIndex, newItems.size)
         notifyDataSetChanged()
     }
 
@@ -53,7 +51,6 @@ class FilmListAdapter(private val _clickListener: FilmListAdapterListener) :
         _search = true
 
         items.clear()
-        val startIndex = items.size
         items.addAll(newItems)
         notifyDataSetChanged()
     }

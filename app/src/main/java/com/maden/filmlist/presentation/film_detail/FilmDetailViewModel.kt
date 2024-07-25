@@ -32,6 +32,14 @@ class FilmDetailViewModel @Inject constructor(
 
     fun getMovieDetail(movieId: Int) {
         viewModelScope.launch(Dispatchers.IO + _exceptionHandler) {
+            //Check if movie is in database
+            val checkMovie = _getMovieByIdLocalUseCase.execute(movieId = movieId.toDouble())
+
+            if (checkMovie is DataResource.Success) {
+                _movieDetail.postValue(checkMovie)
+                return@launch
+            }
+
             //Get movie detail
             val response = _getMovieDetailsUseCase.execute(movieId = movieId)
 
@@ -58,7 +66,6 @@ class FilmDetailViewModel @Inject constructor(
 
     fun insertMovie(movie: MovieDetailResponseModel) {
         viewModelScope.launch(Dispatchers.IO + _exceptionHandler) {
-
             //Check if movie is in database
             val checkMovie =
                 _getMovieByIdLocalUseCase.execute(movieId = movie.id ?: return@launch)

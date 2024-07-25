@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.maden.filmlist.data.local.model.MovieDetailDaoModel
-import com.maden.filmlist.data.local.model.MovieItemDaoModel
 
 @Dao
 interface MovieDao {

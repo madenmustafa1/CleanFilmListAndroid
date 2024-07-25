@@ -1,9 +1,7 @@
 package com.maden.filmlist.presentation.film_list
 
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
-import android.widget.SearchView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
